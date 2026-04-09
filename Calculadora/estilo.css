@@ -1,0 +1,101 @@
+/* static/css/estilo.css — Estilos personalizados da Calculadora de Gorjeta */
+/* Este arquivo é carregado APÓS o Bootstrap, podendo sobrescrever qualquer estilo padrão */
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   1. NAVBAR PERSONALIZADA
+   Estilo 1 obrigatório: personaliza a barra de navegação
+───────────────────────────────────────────────────────────────────────────── */
+.navbar-customizada {
+    background-color: #1a1a2e;  /* Azul-escuro quase preto */
+    border-bottom: 3px solid #e94560; /* Linha de destaque colorida */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-customizada .navbar-brand {
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+}
+
+.navbar-customizada .navbar-brand:hover {
+    color: #e94560 !important; /* Tom avermelhado no hover */
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   2. RODAPÉ PERSONALIZADO
+   Estilo 2 obrigatório: estilo do rodapé
+───────────────────────────────────────────────────────────────────────────── */
+.rodape {
+    background-color: #1a1a2e;
+    color: #a0aab4;             /* Cinza-claro para boa legibilidade */
+    font-size: 0.875rem;
+    margin-top: 2rem;
+    border-top: 3px solid #e94560;
+}
+
+.rodape strong {
+    color: #ffffff;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   3. ESTILOS DE CLASSIFICAÇÃO DE GORJETA
+   Estilo 3 obrigatório: destaque visual para cada categoria
+
+   Cada classe é aplicada ao card de resultado conforme a classificação
+   determinada pelo back-end (via Jinja2 no template resultado.html)
+───────────────────────────────────────────────────────────────────────────── */
+
+/* ── Mão de vaca (gorjeta < 5%) ── borda e acento em laranja/vermelho */
+.classificacao-mao-de-vaca {
+    border-top: 5px solid #dc3545;  /* Vermelho Bootstrap "danger" */
+}
+
+.badge-mao-de-vaca {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+/* ── Legal (5% ≤ gorjeta ≤ 15%) ── borda e acento em azul */
+.classificacao-legal {
+    border-top: 5px solid #0d6efd;  /* Azul Bootstrap "primary" */
+}
+
+.badge-legal {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+/* ── Generoso (gorjeta > 15%) ── borda e acento em verde */
+.classificacao-generoso {
+    border-top: 5px solid #198754;  /* Verde Bootstrap "success" */
+}
+
+.badge-generoso {
+    background-color: #198754;
+    color: #fff;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   4. ESTILOS ADICIONAIS (bonus)
+───────────────────────────────────────────────────────────────────────────── */
+
+/* Deixa o fundo do body levemente acinzentado para destacar os cards */
+body {
+    background-color: #f4f6f9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Faz o footer grudar no fundo mesmo com pouco conteúdo */
+main {
+    flex: 1;
+}
+
+/* Suaviza a transição de hover nas linhas da tabela de resultados */
+.table-hover tbody tr:hover {
+    transition: background-color 0.15s ease;
+}

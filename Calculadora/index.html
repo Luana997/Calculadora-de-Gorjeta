@@ -1,0 +1,112 @@
+{# templates/index.html — Página inicial com o formulário de entrada #}
+{# Herda toda a estrutura de base.html #}
+{% extends "base.html" %}
+
+{# Sobrescreve o título da aba do navegador #}
+{% block titulo %}Calcular Gorjeta{% endblock %}
+
+{# ── Bloco de conteúdo ────────────────────────────────────────────────────── #}
+{% block conteudo %}
+
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+
+        {# Card que envolve o formulário #}
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white text-center py-3">
+                <h2 class="mb-0 fs-4">
+                    <i class="bi bi-calculator me-2"></i>Calcule sua Gorjeta
+                </h2>
+            </div>
+
+            <div class="card-body p-4">
+
+                {# ── Formulário ──────────────────────────────────────────── #}
+                {# method="post" → envia os dados via POST para a rota "/" #}
+                {# action não é necessário pois é a mesma rota #}
+                <form method="post" action="{{ url_for('index') }}" novalidate>
+
+                    {# Campo 1: Valor total da conta #}
+                    <div class="mb-3">
+                        <label for="valor_conta" class="form-label fw-semibold">
+                            <i class="bi bi-receipt me-1"></i>Valor total da conta (R$)
+                        </label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="valor_conta"
+                            name="valor_conta"
+                            step="0.01"
+                            min="0.01"
+                            placeholder="Ex: 150.00"
+                            required
+                            {# Re-popula o campo com o valor já digitado (se houver erro) #}
+                            {# dados.valor_conta vem do dicionário passado pela rota index() #}
+                            value="{{ dados.valor_conta }}"
+                        />
+                        <div class="form-text">Informe o valor total a pagar antes da gorjeta.</div>
+                    </div>
+
+                    {# Campo 2: Quantidade de pessoas #}
+                    <div class="mb-3">
+                        <label for="quantidade_pessoas" class="form-label fw-semibold">
+                            <i class="bi bi-people me-1"></i>Quantidade de pessoas
+                        </label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="quantidade_pessoas"
+                            name="quantidade_pessoas"
+                            step="1"
+                            min="1"
+                            placeholder="Ex: 4"
+                            required
+                            value="{{ dados.quantidade_pessoas }}"
+                        />
+                        <div class="form-text">Quantas pessoas irão dividir a conta?</div>
+                    </div>
+
+                    {# Campo 3: Percentual de gorjeta #}
+                    <div class="mb-4">
+                        <label for="percentual_gorjeta" class="form-label fw-semibold">
+                            <i class="bi bi-percent me-1"></i>Percentual de gorjeta (%)
+                        </label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="percentual_gorjeta"
+                            name="percentual_gorjeta"
+                            step="0.1"
+                            min="0"
+                            placeholder="Ex: 10"
+                            required
+                            value="{{ dados.percentual_gorjeta }}"
+                        />
+                        <div class="form-text">
+                            Abaixo de 5% = Mão de vaca &bull; 5–15% = Legal &bull; Acima de 15% = Generoso
+                        </div>
+                    </div>
+
+                    {# ── Botões ────────────────────────────────────────── #}
+                    <div class="d-grid gap-2 d-sm-flex">
+                        {# Botão de envio — dispara o POST #}
+                        <button type="submit" class="btn btn-primary flex-grow-1">
+                            <i class="bi bi-calculator-fill me-2"></i>Calcular
+                        </button>
+
+                        {# Botão reset — limpa todos os campos do formulário (client-side) #}
+                        <button type="reset" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-counterclockwise me-1"></i>Limpar
+                        </button>
+                    </div>
+
+                </form>
+                {# ── Fim do formulário ─────────────────────────────────── #}
+
+            </div>{# fim card-body #}
+        </div>{# fim card #}
+
+    </div>{# fim col #}
+</div>{# fim row #}
+
+{% endblock %}
