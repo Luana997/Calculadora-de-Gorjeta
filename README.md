@@ -281,3 +281,41 @@ text-center / w-100	Centraliza texto / faz elemento ocupar 100% da largura.
 <!-- Comentário HTML -->
 
 {# Comentário Jinja2 #}
+
+
+
+
+CSS
+css/* Rodapé */
+footer {
+    background-color: #343a40;
+    color: #adb5bd;
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+
+/* Navbar personalizada */
+.navbar-brand {
+    font-size: 1.3rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* Classificações de gorjeta */
+.classificacao-mao-de-vaca {
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+    color: #842029;
+}
+
+.classificacao-legal {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+}
+
+.classificacao-generoso {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
